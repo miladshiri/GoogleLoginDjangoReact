@@ -35,6 +35,7 @@ const GoogleLoginButton = () => {
       const login = useGoogleLogin({
         onSuccess: handleSuccess,
         flow: 'auth-code',
+        redirect_uri: 'http://localhost:8000'
       });
       
   return (
