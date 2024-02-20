@@ -1,18 +1,21 @@
 import requests
 import urllib
 import jwt
+import os
 
 from oauth2client import client
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 def get_id_token_with_code_method_1(code):
-    client_id = '1054192580473-rasl0u08h763a9m5445pku09of3p5umt.apps.googleusercontent.com'
-    client_secret = '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'
     redirect_uri = "postmessage"
     token_endpoint = "https://oauth2.googleapis.com/token"
     payload = {
         'code': code,
-        'client_id': client_id,
-        'client_secret': client_secret,
+        'client_id': os.getenv('CLIENT_ID'),
+        'client_secret': os.getenv('CLIENT_SECRETE'),
         'redirect_uri': redirect_uri,
         'grant_type': 'authorization_code',
     }

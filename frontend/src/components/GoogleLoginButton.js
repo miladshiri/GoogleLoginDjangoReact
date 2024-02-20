@@ -1,8 +1,10 @@
 import React from "react";
 import { useGoogleLogin } from "@react-oauth/google";
 import GoogleButton from "react-google-button";
+import { useNavigate } from 'react-router-dom'
 
 const GoogleLoginButton = () => {
+  const navigate = useNavigate()
   const handleSuccess = (codeResponse) => {
     const authorizationCode = codeResponse.code;
 
@@ -17,6 +19,7 @@ const GoogleLoginButton = () => {
       .then((data) => {
         localStorage.setItem("access_token", data["access_token"]);
         localStorage.setItem("username", data["username"]);
+        navigate('/')
         window.location.reload();
       })
       .catch((error) => {

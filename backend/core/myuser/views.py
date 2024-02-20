@@ -6,8 +6,6 @@ from rest_framework_simplejwt.tokens import AccessToken
 
 from . import utils
 
-from .serializers import LoginWithGoogleSerializer
-
 def authenticate_or_create_user(email):
     try:
         user = User.objects.get(email=email)
@@ -16,7 +14,6 @@ def authenticate_or_create_user(email):
     return user
 
 def get_jwt_token(user):
-    # Generate JWT token for the user
     token = AccessToken.for_user(user)
     return str(token)
 

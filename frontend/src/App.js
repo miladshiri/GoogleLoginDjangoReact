@@ -11,6 +11,8 @@ import LogoutPage from "./pages/LogoutPage";
 import UserContext from "./context/UserContext";
 
 function App() {
+  const clientId = process.env.REACT_APP_CLIENT_ID;
+
   const [userInfo, setUserInfo] = useState([]);
 
   const verifyToken = async () => {
@@ -47,7 +49,7 @@ function App() {
   return (
     <BrowserRouter>
       <UserContext.Provider value={{ userInfo, updateUserInfo }}>
-        <GoogleOAuthProvider clientId="1054192580473-rasl0u08h763a9m5445pku09of3p5umt.apps.googleusercontent.com">
+        <GoogleOAuthProvider clientId={clientId}>
           <div className="App">
             <Header />
             <Routes>
